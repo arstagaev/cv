@@ -53,6 +53,12 @@
 	  /* Prevent content overflow that could cause overlaps */
 	  .projects-grid .column { margin: 0; padding: 0; min-width: 0; }
 	  .box.project-text { height: 100%; display: flex; flex-direction: column; }
+  
+	  /* Unified project title style */
+	  .project-text .title.is-3 {
+	    color: #2563eb !important;   /* brighter, accessible blue (Blue 600) */
+	    font-weight: 800 !important; /* keep titles bold */
+	  }
 	</style>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -134,7 +140,7 @@
 							<article>
 								<div>
 									<p>
-									<h3 style="color: green" class="title is-3">Weather forecasting app</h3>
+									<h3 class="title is-3">Weather Forecasting App</h3>
 									</p>
 
 								</div>
@@ -167,7 +173,7 @@
 							<article>
 								<div>
 									<p>
-									<h3 style="color: green" class="title is-3">Rainbow Shimmer (Custom View)</h3>
+									<h3 class="title is-3">Rainbow Shimmer (Custom View)</h3>
 									</p>
 
 								</div>
@@ -200,7 +206,7 @@
 							<article>
 								<div>
 									<p>
-									<h3 style="color: green" class="title is-3">Flashlight Overlay Compose (Custom View)</h3>
+									<h3 class="title is-3">Flashlight Overlay Compose (Custom View)</h3>
 									</p>
 
 								</div>
@@ -235,7 +241,7 @@
 							<article>
 								<div>
 									<p>
-									<h3 style="color: orange" class="title is-3">Demo projects</h3>
+									<h3 class="title is-3">Demo projects</h3>
 									</p>
 									<p>
 										with no original UI:
@@ -270,7 +276,7 @@
 							<article>
 								<div>
 									<p>
-									<h3 style="color: green" class="title is-3">Swift iOS/MacOS app for text/pdf compare</h3>
+									<h3 class="title is-3">Swift iOS/MacOS app for text/pdf compare</h3>
 									</p>
 
 								</div>
@@ -303,7 +309,7 @@
 							<article>
 								<div>
 									<p>
-									<h3 style="color: green" class="title is-3">Trello-like KMP app</h3>
+									<h3 class="title is-3">Trello-like KMP app</h3>
 									</p>
 
 								</div>
@@ -339,7 +345,7 @@
 							<article>
 								<div>
 									<p>
-									<h3 style="color: green" class="title is-3">PC MachineTool App for Automatic transmission</h3>
+									<h3 class="title is-3">PC MachineTool App for Automatic transmission</h3>
 									</p>
 
 								</div>
@@ -395,7 +401,7 @@
 							<article>
 								<div>
 									<p>
-									<h3 style="color: blue" class="title is-3">Bluetooth Low Energy Android App</h3>
+									<h3 class="title is-3">Bluetooth Low Energy Android App</h3>
 									</p>
 
 								</div>
@@ -457,7 +463,7 @@
 							<article>
 								<div>
 									<p>
-									<h3 style="color: lime" class="title is-3">PC/OSX SerialPort Application</h3>
+									<h3 class="title is-3">PC/OSX SerialPort Application</h3>
 									</p>
 
 								</div>
@@ -523,7 +529,7 @@
 							<article>
 								<div>
 									<p>
-									<h3 style="color: yellow" class="title is-3">Solar Panel X</h3>
+									<h3 class="title is-3">Solar Panel X</h3>
 									</p>
 
 								</div>
@@ -595,7 +601,7 @@
 						<article>
 							<div>
 								<p>
-								<h3 style="color: navy" class="title is-3">My Wind Turbine</h3>
+								<h3 class="title is-3">My Wind Turbine</h3>
 								</p>
 
 							</div>
@@ -641,7 +647,7 @@
 						<article>
 							<div>
 								<p>
-								<h3 style="color: blue" class="title is-3">Ktor Server with DB</h3>
+								<h3 class="title is-3">Ktor Server with DB</h3>
 								</p>
 
 							</div>
@@ -685,7 +691,7 @@
 						<article>
 							<div>
 								<p>
-								<h3 style="color: orange" class="title is-3">Weather-Animation-View</h3>
+								<h3 class="title is-3">Weather-Animation-View</h3>
 								</p>
 
 							</div>
@@ -727,7 +733,7 @@
 						<article>
 							<div>
 								<p>
-								<h3 style="color: red" class="title is-3">Solar Panel Assistant - Firebird</h3>
+								<h3 class="title is-3">Solar Panel Assistant - Firebird</h3>
 								</p>
 
 							</div>
@@ -787,7 +793,7 @@
 						<article>
 							<div>
 								<p>
-								<h3 style="color: purple" class="title is-3">Emoji Password Manager</h3>
+								<h3 class="title is-3">Emoji Password Manager</h3>
 								</p>
 
 							</div>
@@ -842,7 +848,7 @@
 						<article>
 							<div>
 								<p>
-								<h3 style="color: green" class="title is-3">DayLight Map</h3>
+								<h3 class="title is-3">DayLight Map</h3>
 								</p>
 
 							</div>
@@ -945,6 +951,7 @@
 
   // Add a button to each media block and enable click-to-open on images
   document.querySelectorAll('details.media-toggle').forEach(d => {
+    d.open = true; // expand all media blocks on page load
     const figure = d.querySelector('.project-figure');
     if (!figure) return;
     const firstImg = figure.querySelector('img');

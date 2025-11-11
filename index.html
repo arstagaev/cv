@@ -1,15 +1,59 @@
 <!DOCTYPE html>
-<html xmlns:text-decoration="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
 	<title>cv</title>
 	<!-- css files -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.3.1/css/bulma.min.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/styles.css">
 
 	<link rel="icon" type="image/x-icon" href="assets/img/fav.png">
 	<meta name="author" content="Arsen Tagaev">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="utf-8">
+	<!-- Inline helpers to keep project images at their original width and make editing easier -->
+	<style>
+	  .project-figure { overflow: visible; }
+	  .project-figure img { display: block; height: auto; width: 100% !important; max-width: 100% !important; }
+	  details.media-toggle { margin-top: 0.5rem; }
+	  /* Modal viewer */
+	  dialog#mediaModal { padding: 0; border: none; max-width: 95vw; }
+	  dialog#mediaModal::backdrop { background: rgba(0,0,0,0.6); }
+	  #mediaModal .modal-bar { display:flex; align-items:center; justify-content: space-between; padding: .5rem .75rem; border-bottom: 1px solid rgba(0,0,0,.08); background: #fff; }
+	  #mediaModal .modal-body { padding: .5rem; background: #fff; }
+	  #mediaModal img { display:block; width: auto; height: auto; max-width: 90vw; max-height: 85vh; }
+	  .open-viewer-btn { margin: .5rem 0 0; font-size: .85rem; }
+	  /* Make the Projects section span full width */
+	  #projects .container { max-width: none; width: 100%; padding-left: 1rem; padding-right: 1rem; }
+	  
+	  /* Responsive grid for project cards */
+	  .projects-grid { 
+	    display: grid; 
+	    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+	    grid-gap: 1.25rem; 
+	    align-items: stretch;
+	  }
+	  .projects-grid .column { margin: 0; padding: 0; }
+	  .projects-grid .project-text { height: 100%; display: flex; flex-direction: column; }
+
+	  /* Keep header text from being overlapped by the grid */
+	  #projects .has-text-centered { margin-bottom: 1.5rem; }
+
+	  /* Stabilize and space the project grid */
+	  .projects-grid { 
+	    display: grid; 
+	    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+	    column-gap: 1.25rem; 
+	    row-gap: 2rem;              /* more vertical spacing between cards */
+	    align-items: stretch;
+	    margin-top: 0.5rem;
+	  }
+	  /* Neutralize Bulma .columns negative gutters on our grid wrappers */
+	  .projects-grid.columns { margin-left: 0; margin-right: 0; }
+
+	  /* Prevent content overflow that could cause overlaps */
+	  .projects-grid .column { margin: 0; padding: 0; min-width: 0; }
+	  .box.project-text { height: 100%; display: flex; flex-direction: column; }
+	</style>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 	<body>
@@ -61,11 +105,11 @@
 				<h4>Arsen Tagaev</h4>
 			</div>
 			<div class="descriptionintro"></br>
-					Mobile Developer
+					Software Engineer
 			</div>
 			<div class="descriptionintro"></br>
 
-				<h2>mainly I develop android & multiplatform apps in Kotlin & Swift.</h2>
+				<h2>I have an experience in developing projects from scratch (android, macOS / iOS  and CMP/KMM apps with 35К+ installs), and apps in fintech (apps with 5M+ users, landing pages) and in IoT sphere (communication with BLE tag, RTLS, offline-first apps).</h2>
 				<p>
 					<span class="nowrap2" > <b>my tech stack:</b></span>
 					Jetpack Compose, Decompose, Voyager, SQLDelight, Retrofit, Ktor, Coroutines, SQLite, Room, JUnit, RxJava, Camera2, jSerialComm.
@@ -77,13 +121,114 @@
 		
 		<!-- Projects -->
 		<section  id="projects" class="section section-2">
-			<div class="container">
+			<div class="container is-fluid">
 				<div class="has-text-centered">
 					<h3 class="title is-3">My Projects </h3>
 					<p >(IRL FPS in apps are normal, gifs may slow down)</p>
 					<p> </p>
 				</div>
-				<div class="columns is-multiline is-desktop">
+				<div class="columns is-multiline is-desktop projects-grid">
+					<!-- Project N -->
+					<div class="column">
+						<div class="box project-text">
+							<article>
+								<div>
+									<p>
+									<h3 style="color: green" class="title is-3">Weather forecasting app</h3>
+									</p>
+
+								</div>
+								<details class="media-toggle">
+								  <summary class="subtitle">Show UI [gif]</summary>
+								  <figure class="image project-figure">
+								    <img src="assets/img/projects/1_load.png" width="500" height="600">
+								  </figure>
+								</details>
+
+								<div>
+									<p style="margin-top: 30px"></p>
+
+
+									<p style="color: cadetblue">
+										[Compose Multiplatform (CMP, Kotlin Multiplatform (KMP), Decompose, Koin, Ktor]
+									</p>
+									<p style="margin-top: 30px"></p>
+									<p style="color: cadetblue">
+										<a href="https://github.com/arstagaev/WeatherAppCMP"><span class="nowrap" style="color: cadetblue">GitHub</span></a>
+									</p>
+								</div>
+							</article>
+						</div>
+					</div>
+
+					<!-- Project N -->
+					<div class="column">
+						<div class="box project-text">
+							<article>
+								<div>
+									<p>
+									<h3 style="color: green" class="title is-3">Rainbow Shimmer (Custom View)</h3>
+									</p>
+
+								</div>
+								<details class="media-toggle">
+								  <summary class="subtitle">Show UI [gif]</summary>
+								  <figure class="image project-figure">
+								    <img src="assets/img/projects/shimmer.gif" width="500" height="600">
+								  </figure>
+								</details>
+
+								<div>
+									<p style="margin-top: 30px"></p>
+
+
+									<p style="color: cadetblue">
+										[Jetpack Compose, Custom View]
+									</p>
+									<p style="margin-top: 30px"></p>
+									<p style="color: cadetblue">
+										<a href="https://github.com/arstagaev/WeatherAppCMP/blob/de005daa80ead14c96eca1d00f462f3bd3fcacc1/common/ui/src/commonMain/kotlin/com/tagaev/ui/main_weather_screen/MainWeatherScreen.kt#L543"><span class="nowrap" style="color: cadetblue">GitHub</span></a>
+									</p>
+								</div>
+							</article>
+						</div>
+					</div>
+					
+					<!-- Project N -->
+					<div class="column">
+						<div class="box project-text">
+							<article>
+								<div>
+									<p>
+									<h3 style="color: green" class="title is-3">Flashlight Overlay Compose (Custom View)</h3>
+									</p>
+
+								</div>
+								<details class="media-toggle">
+								  <summary class="subtitle">Show UI [png]</summary>
+								  <figure class="image project-figure">
+								    <img src="assets/img/projects/flashlight.png" width="500" height="600">
+								  </figure>
+								</details>
+
+								<div>
+									<p style="margin-top: 30px"></p>
+
+									<p style="color: cadetblue">
+										[Jetpack Compose, Custom View]
+									</p>
+									<p style="margin-top: 30px"></p>
+									<p style="color: cadetblue">
+										<a href="https://github.com/arstagaev/Flashlight-Hints-in-Jetpack-Compose"><span class="nowrap" style="color: cadetblue">GitHub</span></a>
+										<a href="https://medium.com/@tagaev/flashlight-style-overlay-in-jetpack-compose-spotlighting-ui-with-hints-c833448158c0"><span class="nowrap" style="color: cadetblue">Medium (Article)</span></a>
+									</p>
+								</div>
+							</article>
+						</div>
+					</div>
+				</div>
+
+				<div class="columns is-multiline is-desktop projects-grid">
 					<!-- Project N -->
 					<div class="column">
 						<div class="box project-text">
@@ -119,7 +264,39 @@
 							</article>
 						</div>
 					</div>
+					<!-- Project N -->
+					<div class="column">
+						<div class="box project-text">
+							<article>
+								<div>
+									<p>
+									<h3 style="color: green" class="title is-3">Swift iOS/MacOS app for text/pdf compare</h3>
+									</p>
 
+								</div>
+								<details class="media-toggle">
+								  <summary class="subtitle">Show UI [png]</summary>
+								  <figure class="image project-figure">
+								    <img src="assets/img/projects/swift_txtcomp.png" width="500" height="600">
+								  </figure>
+								</details>
+
+								<div>
+									<p style="margin-top: 30px"></p>
+
+
+									<p style="color: cadetblue">
+										[Swift, SwiftUI, In-App Purchases]
+									</p>
+									<p style="margin-top: 30px"></p>
+									<p style="color: cadetblue">
+										<a href="https://apps.apple.com/ru/app/compare-pdf-and-text/id6751617829?l=en-GB
+										Compare PDF and Text"><span class="nowrap" style="color: cadetblue">AppStore</span></a>
+									</p>
+								</div>
+							</article>
+						</div>
+					</div>
 					<!-- Project N -->
 					<div class="column">
 						<div class="box project-text">
@@ -130,13 +307,12 @@
 									</p>
 
 								</div>
-								<button title="Click to Show/Hide Content" type="button" onclick="if(document.getElementById('spoiler11') .style.display=='none') {document.getElementById('spoiler11') .style.display=''}else{document.getElementById('spoiler11') .style.display='none'}"><h2 class="subtitle">Show UI [png]</h2></button>
-								<div id="spoiler11" style="display:none">
-									<figure class="image project-figure">
-										<img src="assets/img/projects/trello.png"  width="500" height="600">
-
-									</figure>
-								</div>
+								<details class="media-toggle">
+								  <summary class="subtitle">Show UI [png]</summary>
+								  <figure class="image project-figure">
+								    <img src="assets/img/projects/trello.png" width="500" height="600">
+								  </figure>
+								</details>
 
 								<div>
 									<p style="margin-top: 30px"></p>
@@ -167,13 +343,12 @@
 									</p>
 
 								</div>
-								<button title="Click to Show/Hide Content" type="button" onclick="if(document.getElementById('spoiler10') .style.display=='none') {document.getElementById('spoiler10') .style.display=''}else{document.getElementById('spoiler10') .style.display='none'}"><h2 class="subtitle">Show UI [png]</h2></button>
-								<div id="spoiler10" style="display:none">
-									<figure class="image project-figure">
-										<img src="assets/img/projects/desktop_app.png" alt="Image">
-
-									</figure>
-								</div>
+								<details class="media-toggle">
+								  <summary class="subtitle">Show UI [png]</summary>
+								  <figure class="image project-figure">
+								    <img src="assets/img/projects/desktop_app.png" alt="Image">
+								  </figure>
+								</details>
 
 								<div>
 									<p style="margin-top: 30px"></p>
@@ -212,7 +387,7 @@
 					</div>
 				</div>
 				<!-- New Row -->
-				<div class="columns is-multiline is-desktop">
+				<div class="columns is-multiline is-desktop projects-grid">
 
 					<!-- Project N -->
 					<div class="column">
@@ -226,13 +401,12 @@
 								</div>
 
 
-								<button title="Click to Show/Hide Content" type="button" onclick="if(document.getElementById('spoiler9') .style.display=='none') {document.getElementById('spoiler9') .style.display=''}else{document.getElementById('spoiler9') .style.display='none'}"><h2 class="subtitle">Show UI [gif]</h2></button>
-								<div id="spoiler9" style="display:none">
-									<figure class="image project-figure">
-										<img src="assets/img/projects/avt2.gif" alt="Image">
-
-									</figure>
-								</div>
+								<details class="media-toggle">
+								  <summary class="subtitle">Show UI [gif]</summary>
+								  <figure class="image project-figure">
+								    <img src="assets/img/projects/avt2.gif" alt="Image">
+								  </figure>
+								</details>
 
 								<div>
 									<p style="margin-top: 30px"></p>
@@ -289,13 +463,12 @@
 								</div>
 
 
-								<button title="Click to Show/Hide Content" type="button" onclick="if(document.getElementById('spoiler0') .style.display=='none') {document.getElementById('spoiler0') .style.display=''}else{document.getElementById('spoiler0') .style.display='none'}"><h2 class="subtitle">Show UI [gif]</h2></button>
-								<div id="spoiler0" style="display:none">
-									<figure class="image project-figure">
-										<img src="assets/img/projects/pc1_2022.gif" alt="Image">
-
-									</figure>
-								</div>
+								<details class="media-toggle">
+								  <summary class="subtitle">Show UI [gif]</summary>
+								  <figure class="image project-figure">
+								    <img src="assets/img/projects/pc1_2022.gif" alt="Image">
+								  </figure>
+								</details>
 								<!--								<div>-->
 								<!--									<figure class="image project-figure">-->
 								<!--										<img src="assets/img/giff.gif" alt="Image">-->
@@ -356,13 +529,13 @@
 								</div>
 
 
-								<button title="Click to Show/Hide Content" type="button" onclick="if(document.getElementById('spoiler1') .style.display=='none') {document.getElementById('spoiler1') .style.display=''}else{document.getElementById('spoiler1') .style.display='none'}"><h2 class="subtitle">Show UI [gif]</h2></button>
-								<div id="spoiler1" style="display:none">
-									<figure class="image project-figure">
-										<img src="assets/img/solxanimation.gif" alt="Image">
-										<img src="assets/img/projects/spx3.jpg" alt="Image">
-									</figure>
-								</div>
+								<details class="media-toggle">
+								  <summary class="subtitle">Show UI [gif]</summary>
+								  <figure class="image project-figure">
+								    <img src="assets/img/solxanimation.gif" alt="Image">
+								    <img src="assets/img/projects/spx3.jpg" alt="Image">
+								  </figure>
+								</details>
 								<!--								<div>-->
 								<!--									<figure class="image project-figure">-->
 								<!--										<img src="assets/img/giff.gif" alt="Image">-->
@@ -392,7 +565,7 @@
 										> paid subscriptions for users
 									</p>
 									<p style="color: cadetblue">
-										[MVVM, Room, Coroutines, Retrofit, Google Maps SDK, Firebase and custom libraries, Gradle optimized for few build variants (Pro and Free version), Support few languages ]
+										[MVVM, Room, Coroutines, Retrofit, Google Maps SDK, Firebase and custom libraries, In-App Purchases, Gradle optimized for few build variants (Pro and Free version), Support few languages ]
 									</p>
 									<p style="margin-top: 30px"></p>
 									<p>
@@ -415,7 +588,7 @@
 				</div>
 			</div>
 
-			<div class="columns is-multiline is-desktop">
+			<div class="columns is-multiline is-desktop projects-grid">
 				<!-- Project 2 -->
 				<div class="column">
 					<div class="box project-text">
@@ -426,13 +599,12 @@
 								</p>
 
 							</div>
-							<button title="Click to Show/Hide Content" type="button2" onclick="if(document.getElementById('spoiler2') .style.display=='none') {document.getElementById('spoiler2') .style.display=''}else{document.getElementById('spoiler2') .style.display='none'}"><h2 class="subtitle">Show UI [gif]</h2></button>
-							<div id="spoiler2" style="display:none">
-
-								<figure class="image project-figure">
-									<img src="assets/img/mwtUI4.gif" alt="Image">
-								</figure>
-							</div>
+							<details class="media-toggle">
+							  <summary class="subtitle">Show UI [gif]</summary>
+							  <figure class="image project-figure">
+							    <img src="assets/img/mwtUI4.gif" alt="Image">
+							  </figure>
+							</details>
 
 							<div>
 								<p style="margin-top: 30px"></p>
@@ -517,13 +689,12 @@
 								</p>
 
 							</div>
-							<button title="Click to Show/Hide Content" type="button3" onclick="if(document.getElementById('spoiler3') .style.display=='none') {document.getElementById('spoiler3') .style.display=''}else{document.getElementById('spoiler3') .style.display='none'}"><h2 class="subtitle">Show UI [gif]</h2></button>
-							<div id="spoiler3" style="display:none">
-
-								<figure class="image project-figure">
-									<img src="assets/img/rainUI5.gif" alt="Image">
-								</figure>
-							</div>
+							<details class="media-toggle">
+							  <summary class="subtitle">Show UI [gif]</summary>
+							  <figure class="image project-figure">
+							    <img src="assets/img/rainUI5.gif" alt="Image">
+							  </figure>
+							</details>
 
 							<div>
 								<p style="margin-top: 30px"></p>
@@ -549,7 +720,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="columns is-multiline is-desktop">
+			<div class="columns is-multiline is-desktop projects-grid">
 				<!-- Project 4 -->
 				<div class="column">
 					<div class="box project-text">
@@ -562,12 +733,12 @@
 							</div>
 
 
-							<button title="Click to Show/Hide Content" type="button" onclick="if(document.getElementById('spoiler4') .style.display=='none') {document.getElementById('spoiler4') .style.display=''}else{document.getElementById('spoiler4') .style.display='none'}"><h2 class="subtitle">Show UI [gif]</h2></button>
-							<div id="spoiler4" style="display:none">
-								<figure class="image project-figure">
-									<img src="assets/img/UI2Firebird.gif" alt="Image">
-								</figure>
-							</div>
+							<details class="media-toggle">
+							  <summary class="subtitle">Show UI [gif]</summary>
+							  <figure class="image project-figure">
+							    <img src="assets/img/UI2Firebird.gif" alt="Image">
+							  </figure>
+							</details>
 							<!--								<div>-->
 							<!--									<figure class="image project-figure">-->
 							<!--										<img src="assets/img/giff.gif" alt="Image">-->
@@ -620,13 +791,12 @@
 								</p>
 
 							</div>
-							<button title="Click to Show/Hide Content" type="button2" onclick="if(document.getElementById('spoiler5') .style.display=='none') {document.getElementById('spoiler5') .style.display=''}else{document.getElementById('spoiler5') .style.display='none'}"><h2 class="subtitle">Show UI [gif]</h2></button>
-							<div id="spoiler5" style="display:none">
-
-								<figure class="image project-figure">
-									<img src="assets/img/epmanimation.gif" alt="Image">
-								</figure>
-							</div>
+							<details class="media-toggle">
+							  <summary class="subtitle">Show UI [gif]</summary>
+							  <figure class="image project-figure">
+							    <img src="assets/img/epmanimation.gif" alt="Image">
+							  </figure>
+							</details>
 
 							<div>
 								<p style="margin-top: 30px"></p>
@@ -676,13 +846,12 @@
 								</p>
 
 							</div>
-							<button title="Click to Show/Hide Content" type="button3" onclick="if(document.getElementById('spoiler6') .style.display=='none') {document.getElementById('spoiler6') .style.display=''}else{document.getElementById('spoiler6') .style.display='none'}"><h2 class="subtitle">Show UI [gif]</h2></button>
-							<div id="spoiler6" style="display:none">
-
-								<figure class="image project-figure">
-									<img src="assets/img/daylight.gif" alt="Image">
-								</figure>
-							</div>
+							<details class="media-toggle">
+							  <summary class="subtitle">Show UI [gif]</summary>
+							  <figure class="image project-figure">
+							    <img src="assets/img/daylight.gif" alt="Image">
+							  </figure>
+							</details>
 
 							<div>
 								<p style="margin-top: 30px"></p>
@@ -729,6 +898,83 @@
 <!--		</section>-->
 		
 		<!-- Scripts  -->
-		<script src="controller.js"></script>		
+		<script src="controller.js"></script>
+<!-- Media viewer modal -->
+<dialog id="mediaModal">
+  <div class="modal-bar">
+    <strong>Preview</strong>
+    <button type="button" id="mediaClose" aria-label="Close">&#10005;</button>
+  </div>
+  <div class="modal-body">
+    <img id="modalImg" alt="Preview">
+  </div>
+</dialog>
+<script>
+(function(){
+  const modal = document.getElementById('mediaModal');
+  const modalImg = document.getElementById('modalImg');
+  const closeBtn = document.getElementById('mediaClose');
+
+  function openWithSrc(src, alt) {
+    modalImg.src = src;
+    modalImg.alt = alt || 'Preview';
+    if (typeof modal.showModal === 'function') {
+      modal.showModal();
+    } else {
+      // Fallback
+      modal.setAttribute('open', '');
+    }
+  }
+
+  function closeModal(){
+    if (typeof modal.close === 'function') modal.close();
+    else modal.removeAttribute('open');
+  }
+
+  closeBtn.addEventListener('click', closeModal);
+  modal.addEventListener('close', () => { modalImg.src = ''; });
+  modal.addEventListener('click', (e) => {
+    const body = modal.querySelector('.modal-body');
+    if (!body) return;
+    const rect = body.getBoundingClientRect();
+    if (e.clientX < rect.left || e.clientX > rect.right || e.clientY < rect.top || e.clientY > rect.bottom) {
+      closeModal();
+    }
+  });
+  document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeModal(); });
+
+  // Add a button to each media block and enable click-to-open on images
+  document.querySelectorAll('details.media-toggle').forEach(d => {
+    const figure = d.querySelector('.project-figure');
+    if (!figure) return;
+    const firstImg = figure.querySelector('img');
+    if (firstImg) {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'open-viewer-btn';
+      btn.textContent = 'Zoom/open media';
+      btn.addEventListener('click', (ev) => {
+        ev.stopPropagation();
+        openWithSrc(firstImg.src, firstImg.alt);
+      });
+      const summary = d.querySelector('summary');
+      // Insert right after the summary and before the figure
+      if (summary) {
+        summary.insertAdjacentElement('afterend', btn);
+      } else {
+        d.insertBefore(btn, figure);
+      }
+    }
+    // Clicking on any image opens the viewer
+    figure.querySelectorAll('img').forEach(img => {
+      img.style.cursor = 'zoom-in';
+      img.addEventListener('click', (ev) => {
+        ev.stopPropagation();
+        openWithSrc(img.src, img.alt);
+      });
+    });
+  });
+})();
+</script>
 	</body>	
 </html>
